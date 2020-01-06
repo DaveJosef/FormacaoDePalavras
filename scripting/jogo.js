@@ -48,6 +48,13 @@ novo.onclick = function verifica(){
     document.getElementById("letra9").value=palavraMisturada[8];
 
 }
+
+function ApagarResposta(){
+    var campo = document.querySelector( "#RESULTADO p" );
+    
+    campo.innerText = "";
+}
+
 function Assembly( elemento ){
     var letra = pegarValue( elemento );
 
@@ -172,8 +179,6 @@ function verificarPalavra(){
     cont++;
     if( document.querySelector( '#RESULTADO p' ).innerText == resposta ){
         alert( "Você é demais! A palavra era " + resposta + "." );
-    }else if (cont==9){//CASO ELE NÃO ACERTE A PALAVRA
-        alert( "Ainda não, tente de novo :/" );
     }
 }
 /*
@@ -214,4 +219,9 @@ cronometro.onload = carregarCronometro( 1000 );
 
 var botaoNova = document.querySelector( ".novapalavra" );
 
-botaoNova.onclick = colocarValues();
+//botaoNova.onclick = colocarValues();
+
+
+var jogo = document.querySelector( "#FUNDODOJOGO" );
+
+jogo.onload = ApagarResposta();
