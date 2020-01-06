@@ -6,7 +6,7 @@
 
 
 
-//console.log( 'Pronto!\n' );
+console.log( 'Pronto!\n' );
 
 var respostas = ["demasiado","plenitude","excelente"];
 var letra, resposta=respostas[0];
@@ -20,127 +20,34 @@ var botoes = document.querySelector( ".painel-palavra" ).children;
 
 //botoes[0].classList.add = "botaopressionado";
 
-const menu = {
-    elemento: document.querySelector( ".guia" )
-};
-// objeto que contem o elemento referente ao menu do site
+function aleatorizar( palavra ){
+    palavra.sort( randOrder );
+}
 
-const resposta = {
-    elemento: document.querySelector( ".painel-resposta" ),
-    vocabulario: [
-        "palavras",
-        "que",
-        "a",
-        "gente",
-        "escolher"
-    ],
-    aleatorizar: function( palavra ){
-        palavra.sort( function randOrder(){
-            return .5 - Math.random();
-        } );
-    },
-    verificarPalavra: function(){
-        if( document.querySelector( '#RESULTADO p' ).innerText == resposta ){
-            alert( "Você é demais! A palavra era " + resposta + "." );
-        }
-        else{
-            alert( "Ainda não :/" );
-        }
-    }
-};
-// objeto responsavel pela manipulacao da palavra
-
-const relogio = {
-    elemento: document.querySelector( ".cronometro" ),
-    carregarCronometro: function( ms, limiteM, limiteS ){
-        var m = 0;
-        var s = 0;
-    
-        var cronometro = document.querySelector( ".cronometro h3" );
-        if( cronometro == null ){
-            return "ERROR";
-        }
-    
-        var temporizador = window.setInterval( function(){
-            if( ( m == limiteM ) && ( s == limiteS ) ){
-                alert( "TEMPO!" );
-            }
-            if( s >= 60 ){
-                m++;
-                s = 0;
-            }
-            escreverTexto( cronometro, m + ":" + s );
-            s++;
-        }, ms );
-    }
-};
-// objeto com metodos do reloginho
-
-const controle = {
-    elemento: document.querySelector( "#FUNDODOJOGO" ),
-    palavra: "",
-    //palavraMisturada: resposta.aleatorizar( resposta.vocabulario[0].split( "" ) ),
-    Assembly: function( elemento ){
-        var letra = pegarValue( elemento );
-    
-        console.log( letra );
-        
-        palavra = juntarLetra( palavra, letra );
-    
-        var resposta = document.querySelector( '#RESULTADO p' );
-    
-        escreverTexto( resposta, palavra );
-    
-        verificarPalavra();
-    },
-    pegarValue: function( elemento ){
-        return elemento.value;
-    },
-    colocarValues: function( ms ){
-        var grade = document.querySelector( ".painel-palavra" ).children;
-    
-        var i = 0;
-        var montagem = window.setInterval( function(){
-            if( i == grade.length ){
-                alert( "parow!" );
-                window.clearInterval(montagem);
-                return 0;
-            }
-            grade[i].value = controle.vocabulario[0].split( "" )[i];
-            i++;
-        }, ms );
-    },
-    juntarLetra: function( palavra, letra ){
-        palavra += letra;
-        return palavra;
-    },
-    escreverTexto: function( elemento, texto ){
-        elemento.innerText = texto;
-    },
-    apagarLetra: function( palavra ){
-        palavra = palavra.substring( 0, ( palavra.length - 1 ) );
-        return palavra;
-    },
-    impedirZoom: function(){
-        var viewport = document.querySelector( 'meta[name="viewport"]' );
-        viewport.content = 'user-scalable=NO, width=device-width, initial-scale=1.0';
-    }
-};
-// objeto com tudo relacionado ao controle principal do site
-
-/*
 function randOrder(){
-    return ;
+    return .5 - Math.random();
 }
 aleatorizar( palavraMisturada );
-*/
 
 /*
 function alertaMeio(){
     console.log( 'Você clicou no meio!' );
 }
 */
-/*
+//FUNÇÃO PARA COLOCAR A PALAVRA EMBARALHADA NA GRADE
+
+novo.onclick = function verifica(){
+    document.getElementById("letra1").value=palavraMisturada[0];
+    document.getElementById("letra2").value=palavraMisturada[1];
+    document.getElementById("letra3").value=palavraMisturada[2];
+    document.getElementById("letra4").value=palavraMisturada[3];
+    document.getElementById("letra5").value=palavraMisturada[4];
+    document.getElementById("letra6").value=palavraMisturada[5];
+    document.getElementById("letra7").value=palavraMisturada[6];
+    document.getElementById("letra8").value=palavraMisturada[7];
+    document.getElementById("letra9").value=palavraMisturada[8];
+
+}
 function Assembly( elemento ){
     var letra = pegarValue( elemento );
 
@@ -154,13 +61,14 @@ function Assembly( elemento ){
 
     verificarPalavra();
 }
-*/
-/*
+
 function pegarValue( elemento ){
     return elemento.value;
 }
-*/
 /*
+-----------------------------
+//(DAVID) COMENTEI A SEGUINTE FUNÇÃO PQ ESTAVA BUGANDO A GRADE, CASO VC ACHE QUE AGORA ELA SE TORNOU OBSOLETA DE FATO, TEM A LIBERDADE DE APAGAR
+-----------------------------
 function colocarValues(){
     var grade = document.querySelector( ".painel-palavra" ).children;
 
@@ -176,26 +84,22 @@ function colocarValues(){
     }, 2000 );
 }
 */
-/*
 function juntarLetra( palavra, letra ){
     palavra += letra;
     return palavra;
 }
-*/
-/*
+
 function escreverTexto( elemento, texto ){
     elemento.innerText = texto;
     //elemento.id = "RESULTADO";
 }
-*/
 /*
 function apagarLetra( palavra ){
-    palavra = palavra.substring( 0, ( palavra.length - 1 ) );
+    palavra = palavra - palavra[ palavra.length - 1 ];
     return palavra;
 }
 */
-/*
-function carregarCronometro( ms, limiteM, limiteS ){
+function carregarCronometro( ms ){
     var m = 0;
     var s = 0;
 
@@ -205,9 +109,6 @@ function carregarCronometro( ms, limiteM, limiteS ){
     }
 
     var temporizador = window.setInterval( function(){
-        if( ( m == limiteM ) && ( s == limiteS ) ){
-            alert( "TEMPO!" );
-        }
         if( s >= 60 ){
             m++;
             s = 0;
@@ -216,7 +117,6 @@ function carregarCronometro( ms, limiteM, limiteS ){
         s++;
     }, ms );
 }
-*/
 /*
 var counter = 10;
 var timer = setInterval(function() {
@@ -263,22 +163,19 @@ function pegarLetra( elemento ){
     return elemento.value;
 }
 */
-/*
 function impedirZoom(){
     var viewport = document.querySelector( 'meta[name="viewport"]' );
     viewport.content = 'user-scalable=NO, width=device-width, initial-scale=1.0';
 }
-*/
-/*
+var cont=0;
 function verificarPalavra(){
+    cont++;
     if( document.querySelector( '#RESULTADO p' ).innerText == resposta ){
         alert( "Você é demais! A palavra era " + resposta + "." );
-    }
-    else{
-        alert( "Ainda não :/" );
+    }else if (cont==9){//CASO ELE NÃO ACERTE A PALAVRA
+        alert( "Ainda não, tente de novo :/" );
     }
 }
-*/
 /*
 function removerLetra( pai, posicao ){
     posicao--;
@@ -300,7 +197,7 @@ function montarPainel( parent, palavra, botoes ){
 
 }
 */
-/*
+
 function apagar( string, intervalo ){
     var temporizador = window.setInterval( function(){
         if( k == string.length ){
@@ -309,30 +206,12 @@ function apagar( string, intervalo ){
         k++;
     }, intervalo );
 }
-*/
 
-//var cronometro = document.querySelector( ".cronometro" );
+var cronometro = document.querySelector( ".cronometro" );
 
-//cronometro.onload = carregarCronometro( 1000, 1, 0 );
-
-
-//var botaoNova = document.querySelector( ".novapalavra" );
-
-//botaoNova.onclick = colocarValues();
+cronometro.onload = carregarCronometro( 1000 );
 
 
-//var botaoRepetir = document.querySelector( ".apagarresposta" );
+var botaoNova = document.querySelector( ".novapalavra" );
 
-
-//var resposta = document.querySelector( '#RESULTADO p' );
-//botaoRepetir.onclick = apagarLetra( resposta );
-
-document.onload = controle.impedirZoom;
-//controle.elemento.children[]
-
-/*
-if( painelCarregado == true ){
-    // codigo de formacao aqui
-}
-*/
-
+botaoNova.onclick = colocarValues();
