@@ -35,8 +35,8 @@ function alertaMeio(){
 }
 */
 //FUNÇÃO PARA COLOCAR A PALAVRA EMBARALHADA NA GRADE
-/*
-novo.onclick = function verifica(){
+
+function verifica(){
     document.getElementById("letra1").value=palavraMisturada[0];
     document.getElementById("letra2").value=palavraMisturada[1];
     document.getElementById("letra3").value=palavraMisturada[2];
@@ -48,7 +48,7 @@ novo.onclick = function verifica(){
     document.getElementById("letra9").value=palavraMisturada[8];
 
 }
-*/
+
 
 
 function carregarCronometro( ms ){
@@ -72,15 +72,7 @@ function carregarCronometro( ms ){
 
 function iniciarJogo(){
     // Jennifer
-    document.getElementById("letra1").value=palavraMisturada[0];
-    document.getElementById("letra2").value=palavraMisturada[1];
-    document.getElementById("letra3").value=palavraMisturada[2];
-    document.getElementById("letra4").value=palavraMisturada[3];
-    document.getElementById("letra5").value=palavraMisturada[4];
-    document.getElementById("letra6").value=palavraMisturada[5];
-    document.getElementById("letra7").value=palavraMisturada[6];
-    document.getElementById("letra8").value=palavraMisturada[7];
-    document.getElementById("letra9").value=palavraMisturada[8];
+    verifica();
     
     // David
     carregarCronometro( 1000 /* Intervalo em milisegundos para mudar o valor do cronometro. */ );
