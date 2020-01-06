@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="aparência/estilo-JOGO.css">
     </head>
 
-    <body>
+    <body onload="impedirZoom()">
         <div class="faixatitulo">
             <h1 class="titulodojogo">JOGO PALAVRA SECRETA</h1>
         </div>
@@ -28,23 +28,23 @@
                     <!--
                     <input id="?" type="button" value="?" onclick="Assembly( this )" >
                     -->
-                    <input id="letra1" type="button" value="?" onclick="Assembly( this )" >
+                    <input id="letra1" type="button" onclick="Assembly( this )" >
 
-                    <input id="letra2" type="button" value="?" onclick="Assembly( this )" >
+                    <input id="letra2" type="button" onclick="Assembly( this )" >
 
-                    <input id="letra3" type="button" value="?" onclick="Assembly( this )" >
+                    <input id="letra3" type="button" onclick="Assembly( this )" >
 
-                    <input id="letra4" type="button" value="?" onclick="Assembly( this )" >
+                    <input id="letra4" type="button" onclick="Assembly( this )" >
 
-                    <input id="letra5" type="button" value="?" onclick="Assembly( this )" >
+                    <input id="letra5" type="button" onclick="Assembly( this )" >
 
-                    <input id="letra6" type="button" value="?" onclick="Assembly( this )" >
+                    <input id="letra6" type="button" onclick="Assembly( this )" >
 
-                    <input id="letra7" type="button" value="?" onclick="Assembly( this )" >
+                    <input id="letra7" type="button" onclick="Assembly( this )" >
 
-                    <input id="letra8" type="button" value="?" onclick="Assembly( this )" >
+                    <input id="letra8" type="button" onclick="Assembly( this )" >
 
-                    <input id="letra9" type="button" value="?" onclick="Assembly( this )" >
+                    <input id="letra9" type="button" onclick="Assembly( this )" >
                 </div>
                 <div class="painel-resposta">
                     <!--<input type="search" name="sequência" id="RESULTADO">-->
@@ -78,7 +78,7 @@
         </div>
 
         <div class="guia">
-            <input class="botao novapalavra" type="button" value="Novo" class="botao">
+            <input id="novo"class="botao novapalavra" type="button" value="Novo" class="botao">
 
             <input class="botao apagarresposta" type="button" value="Repetir">
 

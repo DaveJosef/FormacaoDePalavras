@@ -8,14 +8,15 @@
 
 //console.log( 'Pronto!\n' );
 
-//var letra, resposta = "ACBFDEIHG";
+var respostas = ["demasiado","plenitude","excelente"];
+var letra, resposta=respostas[0];
 
-//var palavra = "";
-//palavraMisturada = resposta.split( "" );
+var palavra = "";
+palavraMisturada = resposta.split( "" );
 
 //var palavraMisturada = ;
 
-//var botoes = document.querySelector( ".painel-palavra" ).children;
+var botoes = document.querySelector( ".painel-palavra" ).children;
 
 //botoes[0].classList.add = "botaopressionado";
 
