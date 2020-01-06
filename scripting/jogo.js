@@ -35,8 +35,8 @@ function alertaMeio(){
 }
 */
 //FUNÇÃO PARA COLOCAR A PALAVRA EMBARALHADA NA GRADE
-
-novo.onclick = function verifica(){
+if(document.getElementById("novo") !== null){
+    document.getElementById("novo").addEventListener("click", function verifica(){
     document.getElementById("letra1").value=palavraMisturada[0];
     document.getElementById("letra2").value=palavraMisturada[1];
     document.getElementById("letra3").value=palavraMisturada[2];
@@ -47,7 +47,7 @@ novo.onclick = function verifica(){
     document.getElementById("letra8").value=palavraMisturada[7];
     document.getElementById("letra9").value=palavraMisturada[8];
 
-}
+})}
 
 function ApagarResposta(){
     var campo = document.querySelector( "#RESULTADO p" );
