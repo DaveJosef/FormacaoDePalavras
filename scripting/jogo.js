@@ -35,7 +35,7 @@ function alertaMeio(){
 }
 */
 //FUNÇÃO PARA COLOCAR A PALAVRA EMBARALHADA NA GRADE
-
+/*
 novo.onclick = function verifica(){
     document.getElementById("letra1").value=palavraMisturada[0];
     document.getElementById("letra2").value=palavraMisturada[1];
@@ -48,6 +48,45 @@ novo.onclick = function verifica(){
     document.getElementById("letra9").value=palavraMisturada[8];
 
 }
+*/
+
+
+function carregarCronometro( ms ){
+    var m = 0;
+    var s = 0;
+
+    var cronometro = document.querySelector( ".cronometro h3" );
+    if( cronometro == null ){
+        return "ERROR";
+    }
+
+    var temporizador = window.setInterval( function(){
+        if( s >= 60 ){
+            m++;
+            s = 0;
+        }
+        escreverTexto( cronometro, m + ":" + s );
+        s++;
+    }, ms );
+}
+
+function iniciarJogo(){
+    // Jennifer
+    document.getElementById("letra1").value=palavraMisturada[0];
+    document.getElementById("letra2").value=palavraMisturada[1];
+    document.getElementById("letra3").value=palavraMisturada[2];
+    document.getElementById("letra4").value=palavraMisturada[3];
+    document.getElementById("letra5").value=palavraMisturada[4];
+    document.getElementById("letra6").value=palavraMisturada[5];
+    document.getElementById("letra7").value=palavraMisturada[6];
+    document.getElementById("letra8").value=palavraMisturada[7];
+    document.getElementById("letra9").value=palavraMisturada[8];
+    
+    // David
+    carregarCronometro( 1000 /* Intervalo em milisegundos para mudar o valor do cronometro. */ );
+}
+
+novo.onclick = iniciarJogo;
 
 function ApagarResposta(){
     var campo = document.querySelector( "#RESULTADO p" );
@@ -106,24 +145,6 @@ function apagarLetra( palavra ){
     return palavra;
 }
 */
-function carregarCronometro( ms ){
-    var m = 0;
-    var s = 0;
-
-    var cronometro = document.querySelector( ".cronometro h3" );
-    if( cronometro == null ){
-        return "ERROR";
-    }
-
-    var temporizador = window.setInterval( function(){
-        if( s >= 60 ){
-            m++;
-            s = 0;
-        }
-        escreverTexto( cronometro, m + ":" + s );
-        s++;
-    }, ms );
-}
 /*
 var counter = 10;
 var timer = setInterval(function() {
@@ -214,7 +235,7 @@ function apagar( string, intervalo ){
 
 var cronometro = document.querySelector( ".cronometro" );
 
-cronometro.onload = carregarCronometro( 1000 );
+//cronometro.onload = carregarCronometro( 1000 );
 
 
 var botaoNova = document.querySelector( ".novapalavra" );
