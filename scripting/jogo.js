@@ -238,3 +238,22 @@ var botaoNova = document.querySelector( ".novapalavra" );
 var jogo = document.querySelector( "#FUNDODOJOGO" );
 
 jogo.onload = ApagarResposta();
+
+//script do botão de ajuda
+
+btnajuda.onclick = function ajuda(){
+    var help= confirm("Esse jogo tem o obejetivo de possibilitar o jogador realizar a junção das letras exibidas na tabela para a formação de diversas palavras.");
+    if(help==true){
+        var help2= confirm("Ao clicar no botão novo será exibido as letras que deverão ser escolhidas para formar as palavras.");
+        if(help2==true){
+            help3= confirm("Ao clicar no botão repetir você poderá repetir a palavra.");
+            if(help3==true){
+                help4= confirm("Ao clicar no botão mostrar será exibido a palavra secreta que estava na tabela.")
+                if(help4==true){
+                    var help5= confirm("Ao marcar a opção difícil as palavras a serem formadas serão de uma complexidade maior.")
+                    if(help5==true) alert("Além disso o jogo conta com o cronómetro marcando o tempo de cada jogada e um sistema de ranking que mostra o melhor tempo dos melhores jogadores.");
+                }
+            }
+        }
+    }
+}
