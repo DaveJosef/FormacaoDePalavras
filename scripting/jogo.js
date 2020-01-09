@@ -38,7 +38,7 @@ function verifica(){
 }
 // A funcao acima coloca as letras da resposta embaralhada na grade
 
-
+//
 function carregarCronometro( ms ){
     var m = 0;
     var s = 0;
@@ -57,6 +57,7 @@ function carregarCronometro( ms ){
         s++;
     }, ms );
 }
+// Inicializa o cronometro
 
 /*
 function iniciarJogo(){
