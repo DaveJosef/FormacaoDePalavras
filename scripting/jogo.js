@@ -1,10 +1,10 @@
-////////////////////////////////////////////////////
-//                                                //
-//  Jogo da Palavra Misteriosa                    //
-//                                                //
-////////////////////////////////////////////////////
+/////////////////////////////////////
+//                                //
+//  Jogo da Palavra Misteriosa   //
+//                              //
+/////////////////////////////////
 
-
+// aleatoriza na grade a palavra, verifica 
 
 var respostas = ["demasiado","plenitude","excelente"];
 var letra, resposta=respostas[0];
@@ -12,7 +12,6 @@ var letra, resposta=respostas[0];
 var palavra = "";
 var palavraMisturada = resposta.split( "" );
 
-//
 function aleatorizar( palavra ){
     palavra.sort( randOrder );
 }
@@ -21,10 +20,8 @@ function randOrder(){
     return .5 - Math.random();
 }
 aleatorizar( palavraMisturada );
-// A funcao acima aleatoriza a palavra
 
-//
-function verifica(){
+novo.onclick =function verifica(){
     document.getElementById("letra1").value=palavraMisturada[0];
     document.getElementById("letra2").value=palavraMisturada[1];
     document.getElementById("letra3").value=palavraMisturada[2];
@@ -38,7 +35,14 @@ function verifica(){
 }
 // A funcao acima coloca as letras da resposta embaralhada na grade
 
-//
+function verificarPalavra(){
+    if( document.querySelector( '#RESULTADO p' ).innerText == resposta ){
+        alert( "Você é demais! A palavra era " + resposta + "." );
+    }
+}
+// Dispara uma mensagem de vitoria quando a palavra confere com a resposta
+
+
 function carregarCronometro( ms ){
     var m = 0;
     var s = 0;
@@ -57,28 +61,15 @@ function carregarCronometro( ms ){
         s++;
     }, ms );
 }
-// Inicializa o cronometro
-
-/*
-function iniciarJogo(){
-    // Jennifer
-    verifica();
-    
-    // David
-    carregarCronometro( 1000 /* Intervalo em milisegundos para mudar o valor do cronometro. *//* );
-}
 
 
-novo.onclick = iniciarJogo;
-*/ //Funcao com bug, mas necessária para reiniciar o jogo
-
-//
-function ApagarResposta(){
-    var campo = document.querySelector( "#RESULTADO p" );
-    
-    campo.innerText = "";
-}
 // Funcao para deixar a resposta em branco
+repetir.onclick=function ApagarResposta(){
+    var campo = document.querySelector( "#RESULTADO p" );
+    palavra= "";
+    escreverTexto( campo, palavra );
+}
+
 
 function Assembly( elemento ){
     var letra = pegarValue( elemento );
@@ -94,113 +85,24 @@ function Assembly( elemento ){
 }
 // Eu fiz essa funcao em ingles, mas ela serve para basicamente montar a resposta ao longo dos cliques na grade
 
-//
+
 function pegarValue( elemento ){
     return elemento.value;
 }
 // Pega a propriedade ou atributo "value" de um botao que ela recebe como parametro
 
-/*
------------------------------
-//(DAVID) COMENTEI A SEGUINTE FUNÇÃO PQ ESTAVA BUGANDO A GRADE, CASO VC ACHE QUE AGORA ELA SE TORNOU OBSOLETA DE FATO, TEM A LIBERDADE DE APAGAR
------------------------------
-function colocarValues(){
-    var grade = document.querySelector( ".painel-palavra" ).children;
 
-    var i = 0;
-    var montagem = window.setInterval( function(){
-        if( i == grade.length ){
-            alert( "parow!" );
-            window.clearInterval(montagem);
-            return 0;
-        }
-        grade[i].value = palavraMisturada[i];
-        i++;
-    }, 2000 );
-}
-*/
-
-//
 function juntarLetra( palavra, letra ){
     palavra += letra;
     return palavra;
 }
 // Retorna uma palavra acrescida da letra
 
-//
+
 function escreverTexto( elemento, texto ){
     elemento.innerText = texto;
 }
 // Escreve o texto em um elemento
-
-/*
-function apagarLetra( palavra ){
-    palavra = palavra - palavra[ palavra.length - 1 ];
-    return palavra;
-}
-*/ //Era para apagar a ultima letra da resposta. Se alguem quiser implementar
-
-/*
-function MontarCronometro( elemento ){
-    var counter = 0;
-    function myTimer() {
-      var timer = setTimeout( function() {
-        console.log( counter++ );
-        if( counter < 11 ) {
-          var texto = counter/60;
-      
-          texto = juntarLetra( texto, ':' );
-          texto = juntarLetra( texto, counter );
-          escreverTexto( elemento, texto );
-          
-          myTimer();
-        }
-      }, 1000 );
-    }
-      
-    myTimer();
-}
-*/ //Exemplo de como funciona a funcao setTimeout. Se alguem quiser brincar com ela
-
-
-//
-function impedirZoom(){
-    var viewport = document.querySelector( 'meta[name="viewport"]' );
-    viewport.content = 'user-scalable=NO, width=device-width, initial-scale=1.0';
-}
-// Quando o jogo é rodado no celular, o jogador pode decidir ser meio doido e clicar repetidamente na tela e dar zoom direto. Isso dai ia acabar com a experiencia do jogo, entao quis impedir o zoom com essa funcao
-
-//
-function verificarPalavra(){
-    if( document.querySelector( '#RESULTADO p' ).innerText == resposta ){
-        alert( "Você é demais! A palavra era " + resposta + "." );
-    }
-}
-// Dispara uma mensagem de vitoria quando a palavra confere com a resposta
-
-/*
-function removerLetra( pai, posicao ){
-    posicao--;
-    var letra = '?';
-    if( pai.hasChildNodes() ){
-        letra = pai.removeChild( pai.childNodes[posicao] );
-    }
-    return letra;
-}
-*/ //Queria mexer com isso ainda. Era pra remover os botoes da grade ao longo dos cliques do jogador e retornar os mesmos
-
-
-//
-function apagar( string, intervalo ){
-    var temporizador = window.setInterval( function(){
-        if( k == string.length ){
-            window.clearInterval( temporizador );
-        }
-        k++;
-    }, intervalo );
-}
-// Essa funcao pode servir para apagar as letras da resposta em camera lenta, mas ainda ta bugada
-
 
 
 //script do botão de ajuda
@@ -221,3 +123,11 @@ btnajuda.onclick = function ajuda(){
         }
     }
 }
+
+
+function impedirZoom(){
+    var viewport = document.querySelector( 'meta[name="viewport"]' );
+    viewport.content = 'user-scalable=NO, width=device-width, initial-scale=1.0';
+}
+/* Quando o jogo é rodado no celular, o jogador pode decidir ser meio doido e clicar repetidamente na tela e dar zoom direto. 
+Isso dai ia acabar com a experiencia do jogo, entao quis impedir o zoom com essa funcao*/
