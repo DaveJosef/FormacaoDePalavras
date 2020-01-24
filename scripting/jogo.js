@@ -42,6 +42,10 @@ function verificarPalavra(){
 }
 // Dispara uma mensagem de vitoria quando a palavra confere com a resposta
 
+mostrar.onclick= function mostrarPalavra(){
+    alert("A resposta certa é " + resposta);
+}
+//mostrar palavra.
 
 function carregarCronometro( ms ){
     var m = 0;
