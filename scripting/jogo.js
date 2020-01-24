@@ -15,7 +15,7 @@ var palavraMisturada = resposta.split( "" );
 function aleatorizar( palavra ){
     palavra.sort( randOrder );
 }
-
+// A funcao abaixo coloca as letras da resposta embaralhada na grade
 function randOrder(){
     return .5 - Math.random();
 }
@@ -31,21 +31,54 @@ novo.onclick =function verifica(){
     document.getElementById("letra7").value=palavraMisturada[6];
     document.getElementById("letra8").value=palavraMisturada[7];
     document.getElementById("letra9").value=palavraMisturada[8];
-
+    cronometro();
 }
-// A funcao acima coloca as letras da resposta embaralhada na grade
 
+// Dispara uma mensagem de vitoria quando a palavra confere com a resposta
 function verificarPalavra(){
     if( document.querySelector( '#RESULTADO p' ).innerText == resposta ){
         alert( "Você é demais! A palavra era " + resposta + "." );
+        pararTempo();
     }
 }
-// Dispara uma mensagem de vitoria quando a palavra confere com a resposta
+
+
+//Função do cronometro e de Parar o cronometro
+
+var intervalo;
+function cronometro() {
+	//document.getElementById('novo').style.display = "none";
+	var segundos = 1;
+	var minutos = 0;
+	intervalo = window.setInterval(function(){
+		if (segundos == 60){ 
+            minutos++;
+            segundos = 0; 
+		}
+		if (minutos == 60){ 
+            parar();
+            alert("O tempo limite foi atingido!!!!");
+		}
+
+		if (segundos < 10) document.getElementById("segundo").innerHTML = "0" + segundos + "s"; 
+		else document.getElementById("segundo").innerHTML = segundos + "s";
+
+		if (minutos < 10) document.getElementById("minuto").innerHTML = "0" + minutos + "m";
+		else document.getElementById("minuto").innerHTML = minutos + "m";	
+			
+		segundos++;
+
+	},1000);
+}
+function pararTempo(){
+    window.clearInterval(intervalo);
+}
+
+//mostrar palavra.
 
 mostrar.onclick= function mostrarPalavra(){
     alert("A resposta certa é " + resposta);
 }
-//mostrar palavra.
 
 function carregarCronometro( ms ){
     var m = 0;
