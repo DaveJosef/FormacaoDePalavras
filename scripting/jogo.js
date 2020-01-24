@@ -42,9 +42,7 @@ function verificarPalavra(){
     }
 }
 
-
 //Função do cronometro e de Parar o cronometro
-
 var intervalo;
 function cronometro() {
 	
@@ -80,11 +78,15 @@ function pararTempo(){
     window.clearInterval(intervalo);
 }
 
-//mostrar palavra.
 
+//mostrar palavra.
 mostrar.onclick= function mostrarPalavra(){
-    alert("A resposta certa é " + resposta);
+    var campo = document.querySelector( "#RESULTADO p" );
+    palavra= "";
+    escreverTexto(campo, resposta);
+    pararTempo();
 }
+
 
 // Funcao para deixar a resposta em branco
 repetir.onclick=function ApagarResposta(){
