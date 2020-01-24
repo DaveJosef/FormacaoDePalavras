@@ -60,12 +60,17 @@ function cronometro() {
             alert("O tempo limite foi atingido!!!!");
 		}
 
-		if (segundos < 10) document.getElementById("segundo").innerHTML = "0" + segundos + "s"; 
-		else document.getElementById("segundo").innerHTML = segundos + "s";
-
-		if (minutos < 10) document.getElementById("minuto").innerHTML = "0" + minutos + "m";
-		else document.getElementById("minuto").innerHTML = minutos + "m";	
-			
+		if (segundos < 10){
+            document.getElementById("segundo").innerHTML = "0" + segundos + "s"; 
+        }
+		else{ 
+            document.getElementById("segundo").innerHTML = segundos + "s";
+        }
+		if (minutos < 10){ document.getElementById("minuto").innerHTML = "0" + minutos + "m";
+        }   
+        else{
+            document.getElementById("minuto").innerHTML = minutos + "m";	
+        }
 		segundos++;
 
 	},1000);
