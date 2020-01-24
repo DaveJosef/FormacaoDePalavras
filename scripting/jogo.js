@@ -51,22 +51,23 @@ function cronometro() {
 	var segundos = 1;
 	var minutos = 0;
 	intervalo = window.setInterval(function(){
-		if (segundos == 60){ 
+        
+		if(segundos == 60){ 
             minutos++;
             segundos = 0; 
 		}
-		if (minutos == 60){ 
+		if(minutos == 60){ 
             parar();
             alert("O tempo limite foi atingido!!!!");
 		}
 
-		if (segundos < 10){
+		if(segundos < 10){
             document.getElementById("segundo").innerHTML = "0" + segundos + "s"; 
         }
 		else{ 
             document.getElementById("segundo").innerHTML = segundos + "s";
         }
-		if (minutos < 10){ document.getElementById("minuto").innerHTML = "0" + minutos + "m";
+		if(minutos < 10){ document.getElementById("minuto").innerHTML = "0" + minutos + "m";
         }   
         else{
             document.getElementById("minuto").innerHTML = minutos + "m";	
@@ -85,26 +86,6 @@ mostrar.onclick= function mostrarPalavra(){
     alert("A resposta certa é " + resposta);
 }
 
-function carregarCronometro( ms ){
-    var m = 0;
-    var s = 0;
-
-    var cronometro = document.querySelector( ".cronometro h3" );
-    if( cronometro == null ){
-        return "ERROR";
-    }
-
-    var temporizador = window.setInterval( function(){
-        if( s >= 60 ){
-            m++;
-            s = 0;
-        }
-        escreverTexto( cronometro, m + ":" + s );
-        s++;
-    }, ms );
-}
-
-
 // Funcao para deixar a resposta em branco
 repetir.onclick=function ApagarResposta(){
     var campo = document.querySelector( "#RESULTADO p" );
@@ -112,7 +93,7 @@ repetir.onclick=function ApagarResposta(){
     escreverTexto( campo, palavra );
 }
 
-
+// Eu fiz essa funcao em ingles, mas ela serve para basicamente montar a resposta ao longo dos cliques na grade
 function Assembly( elemento ){
     var letra = pegarValue( elemento );
 
@@ -125,26 +106,26 @@ function Assembly( elemento ){
 
     verificarPalavra();
 }
-// Eu fiz essa funcao em ingles, mas ela serve para basicamente montar a resposta ao longo dos cliques na grade
 
 
+// Pega a propriedade ou atributo "value" de um botao que ela recebe como parametro
 function pegarValue( elemento ){
     return elemento.value;
 }
-// Pega a propriedade ou atributo "value" de um botao que ela recebe como parametro
 
+
+// Retorna uma palavra acrescida da letra
 
 function juntarLetra( palavra, letra ){
     palavra += letra;
     return palavra;
 }
-// Retorna uma palavra acrescida da letra
 
-
+// Escreve o texto em um elemento
 function escreverTexto( elemento, texto ){
     elemento.innerText = texto;
 }
-// Escreve o texto em um elemento
+
 
 
 //script do botão de ajuda
