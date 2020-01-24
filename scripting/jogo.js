@@ -47,11 +47,11 @@ function verificarPalavra(){
 
 var intervalo;
 function cronometro() {
-	//document.getElementById('novo').style.display = "none";
+	
 	var segundos = 1;
 	var minutos = 0;
 	intervalo = window.setInterval(function(){
-        
+
 		if(segundos == 60){ 
             minutos++;
             segundos = 0; 
