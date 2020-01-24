@@ -5,6 +5,7 @@
 /////////////////////////////////
 
 // aleatoriza na grade a palavra, verifica 
+var cont=0;
 
 var respostas = ["demasiado","plenitude","excelente"];
 var letra, resposta=respostas[0];
@@ -31,7 +32,8 @@ novo.onclick =function verifica(){
     document.getElementById("letra7").value=palavraMisturada[6];
     document.getElementById("letra8").value=palavraMisturada[7];
     document.getElementById("letra9").value=palavraMisturada[8];
-    cronometro();
+    cronometro(); 
+    cont += 1
 }
 
 // Dispara uma mensagem de vitoria quando a palavra confere com a resposta
@@ -81,18 +83,22 @@ function pararTempo(){
 
 //mostrar palavra.
 mostrar.onclick= function mostrarPalavra(){
-    var campo = document.querySelector( "#RESULTADO p" );
-    palavra= "";
-    escreverTexto(campo, resposta);
-    pararTempo();
+    if(cont != 0){
+        pararTempo(); 
+        var campo = document.querySelector( "#RESULTADO p" );
+        palavra= "";
+        escreverTexto(campo, resposta);
+    }
 }
 
 
 // Funcao para deixar a resposta em branco
 repetir.onclick=function ApagarResposta(){
-    var campo = document.querySelector( "#RESULTADO p" );
-    palavra= "";
-    escreverTexto( campo, palavra );
+    if(cont != 0){
+        var campo = document.querySelector( "#RESULTADO p" );
+        palavra= "";
+        escreverTexto( campo, palavra );
+    }
 }
 
 // Eu fiz essa funcao em ingles, mas ela serve para basicamente montar a resposta ao longo dos cliques na grade
