@@ -13,7 +13,7 @@
 
     <body onload="impedirZoom()">
         <div class="faixatitulo">
-            <h1 class="titulodojogo">JOGO PALAVRA SECRETA</h1>
+            <h1 class="titulodojogo">Jogo Formação de Palavras</h1>
         </div>
 
         <div id="FUNDODOJOGO">
@@ -37,31 +37,13 @@
 
                     <input id="letra9" type="button" onclick="Assembly( this )" >
                 </div>
-                <div class="painel-resposta">
+                
+            </div>
+            <div class="painel-resposta">
                     <div id="RESULTADO">
                         <p>Resposta*</p>
                     </div>
                 </div>
-
-                <!--
-                <div class="painel-opcoes">
-                    <input class="botao" type="button" value="Novo" class="botao">
-
-                    <input class="botao" type="button" value="Repetir">
-
-                    <input class="botao" type="button" value="Mostrar">
-
-                    <input class="botao" type="button" value="Ajuda">
-
-                    <div class="botao">
-                        <input class="marcador" type="checkbox" name="Difícil" value="dificil">Difícil
-                        
-                        <br>
-                    </div>
-                </div>
-                -->
-            </div>
-            
             <div class="cronometro">
                 <h3 class="titulodojogo">3</h3>
             </div>
@@ -69,6 +51,8 @@
 
         <div class="guia">
             <input id="novo"class="botao novapalavra" type="button" value="Novo" class="botao">
+            
+            <input id="dificil" class="botao dificil" type="button" value="Difícil">
 
             <input class="botao apagarresposta" type="button" value="Repetir" id="repetir">
 
@@ -76,13 +60,8 @@
 
             <input id="btnajuda" class="botao ajuda" type="button" value="Ajuda">
 
-            <div class="botao dificil">
-                <input class="marcador" type="checkbox" name="Difícil" value="dificil">Difícil
-                
                 <br>
             </div>
-
-            <h1 class="titulodojogo">GUIA</h1>
         </div>
     </body>
 </html>
