@@ -5,14 +5,25 @@
 /////////////////////////////////
 
 // aleatoriza na grade a palavra, verifica 
+
 var cont=0;
 
-var respostas = ["demasiado","plenitude","excelente"];
-var letra, resposta=respostas[0];
+var respostas = [];
+var letra, resposta;
 
-var palavra = "";
-var palavraMisturada = resposta.split( "" );
+ palavra = "";
+ let palavraMisturada
 
+function todoArray(indiceArray){
+    respostas = ["paragrafo","gargalhar","demasiado","plenitude","excelente"];
+    letra, resposta=respostas[indiceArray];
+
+    palavra = "";
+    palavraMisturada = resposta.split( "" );
+    aleatorizar( palavraMisturada );
+    cronometro(); 
+    cont += 1
+}
 function aleatorizar( palavra ){
     palavra.sort( randOrder );
 }
@@ -20,9 +31,11 @@ function aleatorizar( palavra ){
 function randOrder(){
     return .5 - Math.random();
 }
-aleatorizar( palavraMisturada );
 
+
+let contarArray=0;
 novo.onclick =function verifica(){
+    todoArray(contarArray);
     document.getElementById("letra1").value=palavraMisturada[0];
     document.getElementById("letra2").value=palavraMisturada[1];
     document.getElementById("letra3").value=palavraMisturada[2];
@@ -32,16 +45,20 @@ novo.onclick =function verifica(){
     document.getElementById("letra7").value=palavraMisturada[6];
     document.getElementById("letra8").value=palavraMisturada[7];
     document.getElementById("letra9").value=palavraMisturada[8];
-    cronometro(); 
-    cont += 1
+    
+    contarArray+=1;
 }
 
 // Dispara uma mensagem de vitoria quando a palavra confere com a resposta
+let contResposta=0;
 function verificarPalavra(){
     if( document.querySelector( '#RESULTADO p' ).innerText == resposta ){
         alert( "Você é demais! A palavra era " + resposta + "." );
         pararTempo();
+    }else if(contResposta==8){
+        alert("Você não acertou a palavra. Por favor, click em repetir caso queira tentar novamente!" )
     }
+    contResposta+=1;
 }
 
 //Função do cronometro e de Parar o cronometro
