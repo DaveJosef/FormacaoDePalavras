@@ -15,7 +15,7 @@ var letra, resposta;
  let palavraMisturada
 
 function todoArray(indiceArray){
-    respostas = ["paragrafo","gargalhar","demasiado","plenitude","excelente"];
+    respostas = ["paragrafo","gargalhar","tecnologo","confiança","plenitude","excelente"];
     letra, resposta=respostas[indiceArray];
 
     palavra = "";
