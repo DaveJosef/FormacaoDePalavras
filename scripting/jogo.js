@@ -51,14 +51,13 @@ novo.onclick =function verifica(){
 
 // Dispara uma mensagem de vitoria quando a palavra confere com a resposta
 let contResposta=0;
-function verificarPalavra(){
+function verificarPalavra(contresposta){
     if( document.querySelector( '#RESULTADO p' ).innerText == resposta ){
         alert( "Você é demais! A palavra era " + resposta + "." );
         pararTempo();
-    }else if(contResposta==8){
+    }else if(contresposta==9){
         alert("Você não acertou a palavra. Por favor, click em repetir caso queira tentar novamente!" )
     }
-    contResposta+=1;
 }
 
 //Função do cronometro e de Parar o cronometro
@@ -115,6 +114,7 @@ repetir.onclick=function ApagarResposta(){
         var campo = document.querySelector( "#RESULTADO p" );
         palavra= "";
         escreverTexto( campo, palavra );
+        contResposta=0;
     }
 }
 
@@ -128,8 +128,9 @@ function Assembly( elemento ){
     var resposta = document.querySelector( '#RESULTADO p' );
 
     escreverTexto( resposta, palavra );
-
-    verificarPalavra();
+    contResposta+=1
+    verificarPalavra(contResposta);
+    
 }
 
 
