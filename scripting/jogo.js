@@ -8,32 +8,49 @@
 
 var cont=0;
 
-var respostas = [];
+var respostas = ["babaquice","paragrafo","gargalhar","tecnologo","confiança","plenitude"];
 var letra, resposta;
 
  palavra = "";
  let palavraMisturada
 
 function todoArray(indiceArray){
-    respostas = ["paragrafo","gargalhar","tecnologo","confiança","plenitude","excelente"];
+    respostas = ["babaquice","paragrafo","gargalhar","tecnologo","confiança","plenitude"];
     letra, resposta=respostas[indiceArray];
 
-    palavra = "";
+    palavra = "";  
+
     palavraMisturada = resposta.split( "" );
+
     aleatorizar( palavraMisturada );
     cronometro(); 
-    cont += 1
+    cont += 1 
 }
+
+function ArrayDificeis(indiceArray){
+    respostas = ["blasfemia","concepçao","mesquinho","juramento","justiçada","excelente"];
+    letra, resposta=respostas[indiceArray];
+
+    palavra = "";  
+
+    palavraMisturada = resposta.split( "" );
+
+    aleatorizar( palavraMisturada );
+    cronometro(); 
+    cont += 1 
+}
+
 function aleatorizar( palavra ){
     palavra.sort( randOrder );
 }
+
 // A funcao abaixo coloca as letras da resposta embaralhada na grade
 function randOrder(){
     return .5 - Math.random();
 }
 
-
 let contarArray=0;
+
 novo.onclick =function verifica(){
     todoArray(contarArray);
     document.getElementById("letra1").value=palavraMisturada[0];
@@ -49,14 +66,46 @@ novo.onclick =function verifica(){
     contarArray+=1;
 }
 
+//PALAVRAS DIFÍCEIS
+
+
+
+
+let contaArray=0;
+dificil.onclick=function verifica(){
+    
+    ArrayDificeis(contaArray);
+    document.getElementById("letra1").value=palavraMisturada[0];
+    document.getElementById("letra2").value=palavraMisturada[1];
+    document.getElementById("letra3").value=palavraMisturada[2];
+    document.getElementById("letra4").value=palavraMisturada[3];
+    document.getElementById("letra5").value=palavraMisturada[4];
+    document.getElementById("letra6").value=palavraMisturada[5];
+    document.getElementById("letra7").value=palavraMisturada[6];
+    document.getElementById("letra8").value=palavraMisturada[7];
+    document.getElementById("letra9").value=palavraMisturada[8];
+    
+    contaArray+=1;
+    contarArray+=1;
+}
 // Dispara uma mensagem de vitoria quando a palavra confere com a resposta
 let contResposta=0;
 function verificarPalavra(contresposta){
     if( document.querySelector( '#RESULTADO p' ).innerText == resposta ){
         alert( "Você é demais! A palavra era " + resposta + "." );
         pararTempo();
+        if(contaArray==6){
+            alert("Fim de Jogo");
+        }else if(contarArray==6){
+            alert("Fim de Jogo")
+        }
     }else if(contresposta==9){
         alert("Você não acertou a palavra. Por favor, click em repetir caso queira tentar novamente!" )
+        if(contaArray==6){
+            alert("Fim de Jogo");
+        }else if(contarArray==6){
+            alert("Fim de Jogo")
+        }
     }
 }
 
