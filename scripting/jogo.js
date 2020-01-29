@@ -23,6 +23,7 @@ function todoArray(indiceArray){
     palavraMisturada = resposta.split( "" );
 
     aleatorizar( palavraMisturada );
+    pararTempo();
     cronometro(); 
     cont += 1 
 }
@@ -36,6 +37,7 @@ function ArrayDificeis(indiceArray){
     palavraMisturada = resposta.split( "" );
 
     aleatorizar( palavraMisturada );
+    pararTempo();
     cronometro(); 
     cont += 1 
 }
