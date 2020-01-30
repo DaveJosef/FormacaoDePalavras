@@ -101,10 +101,9 @@ function verificarPalavra(contresposta){
         insereRanking(minutos, segundos);
         alert( "Você é demais! A palavra era " + resposta + ".");
         pararTempo();
-        campo=document.querySelector(" #RESULTADO p");
+        var campo=document.querySelector(" #RESULTADO p");
         palavra="";
         escreverTexto(campo, palavra);
-        
         if(contaArray==5){
             alert("Fim de Jogo");
         }else if(contarArray==5){
@@ -189,8 +188,7 @@ function Assembly( elemento ){
 
     escreverTexto( resposta, palavra );
     contResposta+=1
-    verificarPalavra(contResposta);
-    
+    verificarPalavra(contResposta);    
 }
 
 
