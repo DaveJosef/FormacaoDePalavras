@@ -10,6 +10,10 @@ var cont=0;
 
 var respostas = [];
 var letra, resposta;
+var intervalo;
+var segundos = 1;
+var minutos = 0;
+var ranking = [];
 
  palavra = "";
  let palavraMisturada
@@ -20,7 +24,7 @@ function todoArray(indiceArray){
 
     palavra = "";  
 
-    palavraMisturada = resposta.split("");
+    palavraMisturada = resposta.split( "" );
 
     aleatorizar( palavraMisturada );
     pararTempo();
@@ -34,7 +38,7 @@ function ArrayDificeis(indiceArray){
 
     palavra = "";  
 
-    palavraMisturada = resposta.split("");
+    palavraMisturada = resposta.split( "" );
 
     aleatorizar( palavraMisturada );
     pararTempo();
@@ -51,7 +55,7 @@ function randOrder(){
     return .5 - Math.random();
 }
 
-var contarArray=0;
+let contarArray=0;
 
 novo.onclick =function verifica(){
     todoArray(contarArray);
@@ -64,8 +68,8 @@ novo.onclick =function verifica(){
     document.getElementById("letra7").value=palavraMisturada[6];
     document.getElementById("letra8").value=palavraMisturada[7];
     document.getElementById("letra9").value=palavraMisturada[8];
+    
     contarArray+=1;
-
 }
 
 //PALAVRAS DIFÍCEIS
@@ -94,8 +98,13 @@ dificil.onclick=function verifica(){
 let contResposta=0;
 function verificarPalavra(contresposta){
     if( document.querySelector( '#RESULTADO p' ).innerText == resposta ){
-        alert( "Você é demais! A palavra era " + resposta + "." );
+        insereRanking(minutos, segundos);
+        alert( "Você é demais! A palavra era " + resposta + ".");
         pararTempo();
+        campo=document.querySelector(" #RESULTADO p");
+        palavra="";
+        escreverTexto(campo, palavra);
+        
         if(contaArray==5){
             alert("Fim de Jogo");
         }else if(contarArray==5){
@@ -112,11 +121,11 @@ function verificarPalavra(contresposta){
 }
 
 //Função do cronometro e de Parar o cronometro
-var intervalo;
+
 function cronometro() {
 	
-	var segundos = 1;
-	var minutos = 0;
+	segundos = 1;
+	minutos = 0;
 	intervalo = window.setInterval(function(){
 
 		if(segundos == 60){ 
@@ -224,10 +233,53 @@ btnajuda.onclick = function ajuda(){
     }
 }
 
+/* Quando o jogo é rodado no celular, o jogador pode decidir ser meio doido e clicar repetidamente na tela e dar zoom direto. 
+Isso dai ia acabar com a experiencia do jogo, entao quis impedir o zoom com essa funcao*/
 
 function impedirZoom(){
     var viewport = document.querySelector( 'meta[name="viewport"]' );
     viewport.content = 'user-scalable=NO, width=device-width, initial-scale=1.0';
 }
-/* Quando o jogo é rodado no celular, o jogador pode decidir ser meio doido e clicar repetidamente na tela e dar zoom direto. 
-Isso dai ia acabar com a experiencia do jogo, entao quis impedir o zoom com essa funcao*/
+
+// Insere o tempo em minutos e segundos no array
+function insereRanking(min, seg){
+    var tempo = 60 * min + seg;
+
+    ranking.push(tempo);
+    ordenaRanking();
+}
+
+// método para ordenar ranking
+function ordenaRanking(){
+    for (let i = 1; i < ranking.length; i++) {
+      let j = i - 1
+      let tmp = ranking[i]
+      while (j >= 0 && ranking[j] > tmp) {
+        ranking[j + 1] = ranking[j]
+        j--
+      }
+      ranking[j+1] = tmp
+    }
+
+  }
+
+// Exibe o ranking das três melhores pontuações
+
+function exibeRanking(){
+    var pri = document.getElementById('first');
+    var seg = document.getElementById('second');
+    var ter = document.getElementById('third');
+
+    var min, seg; 
+
+    if(ranking[0] != undefined){
+        pri.innerText = ranking[0] + ' s';
+    }    
+    if(ranking[1] != undefined){
+        seg.innerText = ranking[1] + ' s';
+    }
+    if(ranking[2] != undefined){
+        ter.innerText = ranking[2] + ' s';
+    }
+
+}

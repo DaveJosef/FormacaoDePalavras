@@ -19,23 +19,23 @@
         <div id="FUNDODOJOGO">
             <div class="quadrodapalavra">
                 <div class="painel-palavra">
-                    <input id="letra1"  id="aparecer" type="button" onclick="Assembly( this )" >
+                    <input id="letra1" type="button" onclick="Assembly( this )" >
 
-                    <input id="letra2"  type="button" onclick="Assembly( this )" >
+                    <input id="letra2" type="button" onclick="Assembly( this )" >
 
-                    <input id="letra3"  type="button" onclick="Assembly( this )" >
+                    <input id="letra3" type="button" onclick="Assembly( this )" >
 
-                    <input id="letra4"  type="button" onclick="Assembly( this )" >
+                    <input id="letra4" type="button" onclick="Assembly( this )" >
 
-                    <input id="letra5"  type="button" onclick="Assembly( this )" >
+                    <input id="letra5" type="button" onclick="Assembly( this )" >
 
-                    <input id="letra6"  type="button" onclick="Assembly( this )" >
+                    <input id="letra6" type="button" onclick="Assembly( this )" >
 
-                    <input id="letra7"  type="button" onclick="Assembly( this )" >
+                    <input id="letra7" type="button" onclick="Assembly( this )" >
 
-                    <input id="letra8"  type="button" onclick="Assembly( this )" >
+                    <input id="letra8" type="button" onclick="Assembly( this )" >
 
-                    <input id="letra9"  type="button" onclick="Assembly( this )" >
+                    <input id="letra9" type="button" onclick="Assembly( this )" >
                 </div>
                 
             </div>
@@ -43,12 +43,28 @@
                     <div id="RESULTADO">
                         <p>Resposta*</p>
                     </div>
-                </div>
-                <div class="cronometro">
+            </div>
+            <div class="cronometro">
                     <h3>
                        <span id="minuto">00m</span><span id="segundo">00s</span><br>
                    </h3>
-               </div>
+            </div>
+            <div>
+                <table>Melhores tempos
+                    <tr>
+                        <td>1º</td>
+                        <td id="first">   </td>
+                    </tr>
+                    <tr>
+                        <td>2º</td>
+                        <td id="second">   </td>     
+                    </tr>
+                    <tr>
+                        <td>3º</td>
+                        <td id="third">   </td>     
+                    </tr>                 
+                </table>
+            </div>
         </div>
 
         <div class="guia">
@@ -62,6 +78,7 @@
 
             <input id="btnajuda" class="botao ajuda" type="button" value="Ajuda">
 
+            <input class="botao" type="button" value="Ranking" onclick="exibeRanking()">
                 <br>
             </div>
         </div>

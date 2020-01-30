@@ -145,3 +145,18 @@ body {
     background-color: rgb(90, 86, 86);
     border-radius: 10px;
 }
+
+table{
+    background-color: rgba(128, 128, 128, 0.473);
+    border-radius: 10px;
+    border-width: 5px;
+    width: 125px;
+}
+
+tr{
+    font-size: 20px;
+}
+
+#first, #second, #third{
+    font-size: 15px;
+}
