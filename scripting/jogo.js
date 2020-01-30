@@ -8,19 +8,19 @@
 
 var cont=0;
 
-var respostas = ["babaquice","paragrafo","gargalhar","tecnologo","confiança","plenitude"];
+var respostas = [];
 var letra, resposta;
 
  palavra = "";
  let palavraMisturada
 
 function todoArray(indiceArray){
-    respostas = ["babaquice","paragrafo","gargalhar","tecnologo","confiança","plenitude"];
+    respostas = ["programar","paragrafo","gargalhar","tecnologo","confiança","plenitude"];
     letra, resposta=respostas[indiceArray];
 
     palavra = "";  
 
-    palavraMisturada = resposta.split( "" );
+    palavraMisturada = resposta.split("");
 
     aleatorizar( palavraMisturada );
     pararTempo();
@@ -34,7 +34,7 @@ function ArrayDificeis(indiceArray){
 
     palavra = "";  
 
-    palavraMisturada = resposta.split( "" );
+    palavraMisturada = resposta.split("");
 
     aleatorizar( palavraMisturada );
     pararTempo();
@@ -51,7 +51,7 @@ function randOrder(){
     return .5 - Math.random();
 }
 
-let contarArray=0;
+var contarArray=0;
 
 novo.onclick =function verifica(){
     todoArray(contarArray);
@@ -64,8 +64,8 @@ novo.onclick =function verifica(){
     document.getElementById("letra7").value=palavraMisturada[6];
     document.getElementById("letra8").value=palavraMisturada[7];
     document.getElementById("letra9").value=palavraMisturada[8];
-    
     contarArray+=1;
+
 }
 
 //PALAVRAS DIFÍCEIS
@@ -96,16 +96,16 @@ function verificarPalavra(contresposta){
     if( document.querySelector( '#RESULTADO p' ).innerText == resposta ){
         alert( "Você é demais! A palavra era " + resposta + "." );
         pararTempo();
-        if(contaArray==6){
+        if(contaArray==5){
             alert("Fim de Jogo");
-        }else if(contarArray==6){
+        }else if(contarArray==5){
             alert("Fim de Jogo")
         }
     }else if(contresposta==9){
         alert("Você não acertou a palavra. Por favor, click em repetir caso queira tentar novamente!" )
-        if(contaArray==6){
+        if(contaArray==5){
             alert("Fim de Jogo");
-        }else if(contarArray==6){
+        }else if(contarArray==5){
             alert("Fim de Jogo")
         }
     }
